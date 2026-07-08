@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online DIY Nail Art Workshop — Ellement Co. Nail Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Chonburi&family=Prata&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GLOBAL — copied exactly from index.html
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand-pink: #ee6396;
+  --brand-pink-light: #f48ab0;
+  --brand-pink-pale: #f9c2d2;
+  --brand-cream: #fbf4e6;
+  --brand-cream-card: #fdf4ef;
+  --brand-blue: #a0b8e1;
+  --brand-blue-light: #dbe6f6;
+  --brand-blue-dark: #82a3d4;
+  --brand-black: #2d2d2d;
+  --brand-gray: #666666;
+  --brand-white: #ffffff;
+  --sans: 'Montserrat', sans-serif;
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --display: 'Chonburi', serif;
+  --fashion: 'Prata', serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--brand-white); color: var(--brand-black); font-size: 14px; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+.section-title { text-align: center; font-family: var(--fashion); font-size: 40px; margin-bottom: 40px; color: var(--brand-pink); font-weight: 400; }
+.dots-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand-blue); opacity: 0.5; transition: opacity .3s; cursor: pointer; border: none; padding: 0; }
+.dot.active { opacity: 1; }
+
+/* ============================================================
+   HEADER — exact copy from index.html
+   ============================================================ */
+.top-bar { background-color: var(--brand-blue); color: var(--brand-white); text-align: center; padding: 10px 15px; font-size: 16px; font-weight: 400; font-family: var(--sans); }
+.main-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 12px 2% 12px 2%; background: var(--brand-cream); border-bottom: 1px solid rgba(45,45,45,0.08); }
+.logo { line-height: 1.1; flex-shrink: 0; }
+.logo .logo-top { font-family: var(--serif); font-size: 24px; font-weight: 700; letter-spacing: 6px; color: var(--brand-black); white-space: nowrap; }
+.logo .logo-top sup { font-size: 9px; letter-spacing: 0; }
+.logo .logo-sub { font-family: var(--serif); font-size: 15px; letter-spacing: 3px; color: var(--brand-black); }
+.header-search { flex: 0 1 320px; display: flex; align-items: center; background: var(--brand-white); border: 2px solid var(--brand-black); border-radius: 50px; padding: 8px 14px; gap: 10px; }
+.header-search input { flex: 1; border: none; outline: none; background: transparent; font-family: var(--sans); font-size: 13px; color: var(--brand-black); min-width: 0; }
+.header-search svg { width: 18px; height: 18px; stroke: var(--brand-black); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+.nav-links { display: flex; gap: 26px; align-items: center; font-size: 16px; font-weight: 500; }
+.nav-links a { color: var(--brand-black); white-space: nowrap; }
+.nav-links a.nav-italic { font-style: italic; }
+.btn-phone { background-color: var(--brand-blue); color: var(--brand-white); padding: 12px 22px; border-radius: 50px; font-weight: 600; font-size: 15px; font-style: italic; white-space: nowrap; }
+
+/* ============================================================
+   HERO CAROUSEL — exact copy from index.html
+   ============================================================ */
+.hero-section { background-color: var(--brand-cream); padding: 55px 0 45px; position: relative; overflow: hidden; }
+.hero-carousel { position: relative; height: 560px; max-width: 1400px; margin: 0 auto; }
+.hero-slide { position: absolute; top: 50%; left: 50%; width: 44%; aspect-ratio: 1 / 0.93; border-radius: 44px; background: var(--brand-blue-light); display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%); transition: transform .7s cubic-bezier(.22,.8,.3,1), opacity .7s; cursor: grab; overflow: hidden; }
+.hero-slide:active { cursor: grabbing; }
+.hero-slide video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-slide.is-active { z-index: 5; transform: translate(-50%, -50%) scale(1); opacity: 1; background: var(--brand-blue-light); }
+.hero-slide.is-prev { z-index: 2; transform: translate(-118%, -50%) scale(0.78); opacity: 1; background: linear-gradient(90deg, var(--brand-blue-light) 0%, #9badd0 55%, #7898c2 100%); }
+.hero-slide.is-next { z-index: 2; transform: translate(18%, -50%) scale(0.78); opacity: 1; background: linear-gradient(270deg, var(--brand-blue-light) 0%, #9badd0 55%, #7898c2 100%); }
+.hero-slide.is-hidden { z-index: 1; opacity: 0; transform: translate(-50%, -50%) scale(0.6); pointer-events: none; }
+.play-btn { width: 84px; height: 84px; border: 3px solid var(--brand-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brand-pink); background: transparent; position: relative; z-index: 2; transition: transform .2s; }
+.play-btn:hover { transform: scale(1.08); }
+.play-btn svg { width: 34px; height: 34px; margin-left: 6px; fill: currentColor; stroke: none; }
+.hero-slide.is-prev .play-btn, .hero-slide.is-next .play-btn { width: 70px; height: 70px; }
+.hero-section .dots-pagination { margin-top: 26px; }
+.hero-section .dot { background: var(--brand-blue); }
+
+/* ============================================================
+   COURSE DETAIL — pink, 2-col: left=text, right=kit photo
+   ============================================================ */
+.course-detail-section { background-color: var(--brand-pink); padding: 60px 8%; }
+.course-detail-section .course-main-title { font-family: var(--display); font-weight: 400; font-size: 64px; color: var(--brand-cream); text-align: center; line-height: 1.05; margin-bottom: 8px; }
+.course-detail-section .course-tagline { font-family: var(--fashion); font-style: italic; font-size: 18px; color: var(--brand-cream); text-align: center; margin-bottom: 50px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
+.detail-left h2 { font-family: var(--display); font-weight: 400; font-size: 38px; color: var(--brand-cream); margin-bottom: 24px; }
+/* Price pills: cream bg, black text, italic Montserrat, border outline — match mockup exactly */
+.price-pill {
+  display: inline-block;
+  background: var(--brand-cream);
+  color: var(--brand-black);
+  border: 2px solid var(--brand-cream);
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  font-family: var(--sans);
+  margin-bottom: 12px;
+  display: block;
+  width: fit-content;
+  min-width: 260px;
+  line-height: 1.4;
+}
+.kit-note { font-size: 13px; color: var(--brand-cream); line-height: 1.7; margin-top: 8px; }
+.kit-note b { display: block; font-weight: 700; margin-bottom: 4px; font-size: 13px; color: var(--brand-cream); font-style: normal; }
+.btn-booknow { display: inline-block; margin-top: 26px; font-family: var(--display); font-size: 44px; font-weight: 400; color: var(--brand-cream); background: none; border: none; cursor: pointer; padding: 0; }
+.btn-booknow:hover { opacity: 0.85; }
+.kit-photo-box { width: 100%; aspect-ratio: 1/0.85; border-radius: 28px; overflow: hidden; background: var(--brand-pink-pale); }
+.kit-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ============================================================
+   WHAT'S INCLUDED — cream, carousel like home courses
+   ============================================================ */
+.included-section { background-color: var(--brand-cream); padding: 60px 6% 70px; }
+.included-section .section-title { font-family: var(--display); font-size: 48px; color: var(--brand-pink); margin-bottom: 50px; }
+.included-carousel { overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 40px; padding: 6px 4px 10px; scrollbar-width: none; }
+.included-carousel::-webkit-scrollbar { display: none; }
+.included-card { flex: 0 0 calc(33.333% - 28px); scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.included-img { width: 100%; aspect-ratio: 1/1; border-radius: 22px; overflow: hidden; background: var(--brand-cream-card); }
+.included-img img { width: 100%; height: 100%; object-fit: cover; }
+.included-copy { text-align: center; }
+.included-copy h4 { font-size: 16px; font-weight: 700; color: var(--brand-pink); margin-bottom: 6px; }
+.included-copy p { font-size: 13px; color: var(--brand-pink); line-height: 1.6; }
+.included-section .dots-pagination { margin-top: 24px; }
+
+/* ============================================================
+   MEET PREETIKA — pink section, NO waves at all
+   ============================================================ */
+.preetika-section { background-color: var(--brand-pink); padding: 70px 8%; }
+.preetika-inner { max-width: 1050px; margin: 0 auto; }
+.preetika-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.preetika-text { text-align: center; }
+.preetika-text h3 { font-family: var(--display); font-weight: 400; font-size: 44px; color: var(--brand-cream); margin-bottom: 0; line-height: 1; }
+.preetika-text h2 { font-family: var(--display); font-weight: 400; font-size: 68px; color: var(--brand-cream); line-height: 1; margin-bottom: 4px; }
+.preetika-text .role { font-family: var(--fashion); font-style: italic; font-size: 20px; color: var(--brand-cream); margin-bottom: 28px; display: block; }
+.preetika-text p { font-size: 13px; color: var(--brand-cream); line-height: 1.8; margin-bottom: 14px; text-align: center; }
+.preetika-photo { width: 100%; aspect-ratio: 3/4; border-radius: 34px; overflow: hidden; background: var(--brand-cream-card); }
+.preetika-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ============================================================
+   STATS BAR — cream bg, blue icons, pink Chonburi text
+   ============================================================ */
+.stats-section { background-color: var(--brand-cream); padding: 40px 8% 50px; border-top: 3px solid var(--brand-pink); border-bottom: 3px solid var(--brand-pink); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; text-align: center; }
+.stat-item { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.stat-icon-wrap { width: 80px; height: 80px; flex-shrink: 0; }
+.stat-icon-wrap svg { width: 100%; height: 100%; }
+.stat-label { font-family: var(--display); font-size: 16px; color: var(--brand-pink); font-weight: 400; line-height: 1.4; }
+
+/* ============================================================
+   STUDENT TESTIMONIALS — pink, 3 cream tall cards
+   (exact match to test-section in index.html)
+   ============================================================ */
+.test-section { background-color: var(--brand-pink); padding: 55px 8% 90px; }
+.test-section .section-title { color: var(--brand-cream); font-family: var(--display); font-size: 48px; margin-bottom: 45px; font-weight: 400; }
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; max-width: 1050px; margin: 0 auto; }
+.test-box { background: var(--brand-cream); border-radius: 34px; aspect-ratio: 3/4; position: relative; display: flex; align-items: center; justify-content: center; }
+.test-box .play-btn { border-color: var(--brand-pink); color: var(--brand-pink); width: 66px; height: 66px; }
+.test-box .play-btn svg { width: 26px; height: 26px; }
+
+/* ============================================================
+   STUDENT GALLERY — cream, wide photo strip
+   ============================================================ */
+.gallery-section { background-color: var(--brand-cream); padding: 60px 0 70px; }
+.gallery-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 48px; margin-bottom: 36px; font-weight: 400; }
+.gallery-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 3px; }
+.gallery-strip::-webkit-scrollbar { display: none; }
+.gallery-photo { flex: 0 0 25%; height: 220px; scroll-snap-align: start; overflow: hidden; position: relative; }
+.gallery-photo:nth-child(1) { background: linear-gradient(120deg,#e8d5c4,#c9a890); }
+.gallery-photo:nth-child(2) { background: linear-gradient(120deg,#c8dfe8,#9bbdcd); }
+.gallery-photo:nth-child(3) { background: linear-gradient(120deg,#e0dce8,#b0a8c9); }
+.gallery-photo:nth-child(4) { background: linear-gradient(120deg,#e8c8d8,#c98fb0); }
+.gallery-photo:nth-child(5) { background: linear-gradient(120deg,#d0e0f4,#a0b8d8); }
+.gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-section .dots-pagination { margin-top: 26px; }
+
+/* ============================================================
+   CONSULTATION — pink, exact copy from index.html
+   ============================================================ */
+.consultation-section { background-color: var(--brand-pink); padding: 60px 8%; }
+.consultation-section .section-title { color: var(--brand-white); font-family: var(--display); font-size: 48px; margin-bottom: 40px; font-weight: 400; }
+.consultation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+.consultation-box { border-radius: 30px; overflow: hidden; }
+.consultation-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.consultation-form { background: var(--brand-blue); border-radius: 30px; padding: 40px; color: var(--brand-white); }
+.form-title { font-family: var(--serif); font-size: 36px; font-style: italic; margin-bottom: 20px; }
+.form-fields { display: flex; flex-direction: column; gap: 14px; }
+.form-fields input, .form-fields textarea { width: 100%; padding: 12px 16px; border: none; border-radius: 8px; background: var(--brand-white); color: var(--brand-black); font-family: var(--sans); font-size: 13px; outline: none; }
+.form-fields input::placeholder, .form-fields textarea::placeholder { color: #999; }
+.form-fields textarea { resize: none; min-height: 70px; }
+.btn-submit { align-self: flex-start; margin-top: 6px; background: var(--brand-black); color: var(--brand-white); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; border-radius: 50px; border: none; cursor: pointer; font-family: var(--sans); }
+
+/* ============================================================
+   MINI KITS — cream, exact copy from index.html
+   ============================================================ */
+.minikits-section { background-color: var(--brand-cream); padding: 80px 8%; }
+.minikits-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 46px; margin-bottom: 60px; }
+.minikits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; max-width: 1100px; margin: 0 auto; }
+.minikit-col { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.minikit-box { background: #fefaf2; border-radius: 22px; width: 100%; aspect-ratio: 5/6; box-shadow: 0 10px 24px rgba(0,0,0,0.06); overflow: hidden; }
+.minikit-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.minikit-pill { width: auto; min-width: 165px; padding: 14px 34px; background-color: var(--brand-blue); border-radius: 50px; color: var(--brand-white); font-size: 18px; font-weight: 700; text-align: center; transition: background .2s; }
+.minikit-pill:hover { background: var(--brand-blue-dark); }
+
+/* Wave bridge between minikits (cream) → pink strip → pre-footer (blue)
+   Matches Image 1: cream scallop bumps hang DOWN into pink from above,
+   then a solid pink band, then blue starts.
+   Technique: same absolute-positioned waves as founder-section in index.html */
+.bridge-wave-section { background-color: var(--brand-pink); position: relative; height: 100px; }
+.bridge-wave-top { position: absolute; top: -1px; left: 0; width: 100%; height: 60px; line-height: 0; z-index: 2; }
+.bridge-wave-top svg { display: block; width: 100%; height: 100%; }
+.bridge-wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; height: 60px; line-height: 0; z-index: 2; }
+.bridge-wave-bottom svg { display: block; width: 100%; height: 100%; }
+
+/* ============================================================
+   PRE-FOOTER — exact copy from index.html
+   ============================================================ */
+.pre-footer { background-color: var(--brand-blue); color: var(--brand-black); padding: 40px 8%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.pf-item { display: flex; flex-direction: column; gap: 10px; font-size: 11px; }
+.pf-title { font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 13px; }
+
+/* ============================================================
+   FOOTER — exact copy from index.html
+   ============================================================ */
+.footer-wrapper { background-color: var(--brand-cream); position: relative; padding-top: 100px; }
+.footer-wave { position: absolute; top: 0; left: 0; width: 100%; height: 100px; line-height: 0; pointer-events: none; }
+.footer-wave svg { display: block; width: 100%; height: 100%; }
+.footer-wave .wave-fill { fill: var(--brand-blue); }
+.footer-wave .wave-stroke { fill: none; stroke: var(--brand-blue-dark); stroke-width: 2px; }
+.footer-inner { position: relative; padding: 0 8%; max-width: 1280px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(45,45,45,0.1); align-items: start; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; color: var(--brand-black); }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul li { font-size: 12px; }
+.footer-col ul li a { color: var(--brand-gray); transition: color .2s; }
+.footer-col ul li a:hover { color: var(--brand-pink); }
+.footer-logo { font-family: var(--serif); font-size: 20px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--brand-black); }
+.footer-desc { font-size: 11px; color: var(--brand-gray); margin-bottom: 24px; max-width: 280px; line-height: 1.7; }
+.footer-newsletter h4 { font-family: var(--serif); font-weight: 700; font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 6px; }
+.footer-newsletter > p { font-size: 11px; color: var(--brand-gray); margin-bottom: 14px; }
+.subscribe-form { display: flex; gap: 0; max-width: 320px; border: 1px solid var(--brand-black); border-radius: 50px; overflow: hidden; margin-bottom: 24px; }
+.subscribe-form input { flex: 1; padding: 12px 16px; border: none; font-size: 12px; font-family: var(--sans); background: var(--brand-white); color: var(--brand-black); outline: none; }
+.subscribe-form input::placeholder { color: #999; }
+.subscribe-form button { background: var(--brand-black); color: var(--brand-white); padding: 12px 22px; font-size: 12px; font-weight: 600; white-space: nowrap; transition: background .2s; }
+.subscribe-form button:hover { background: var(--brand-pink); }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a { width: 34px; height: 34px; border: 1px solid rgba(45,45,45,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brand-black); transition: border-color .2s, background .2s, color .2s; }
+.footer-social a:hover { border-color: var(--brand-pink); background: var(--brand-pink); color: var(--brand-white); }
+.footer-social svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 24px 0 32px; }
+.footer-copy { font-size: 11px; color: var(--brand-gray); }
+.footer-bottom-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.footer-bottom-links a { font-size: 11px; color: var(--brand-gray); transition: color .2s; }
+.footer-bottom-links a:hover { color: var(--brand-pink); }
+
+/* Floating WA */
+.wa-float { position: fixed; right: 22px; bottom: 22px; width: 52px; height: 52px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.25); z-index: 50; transition: transform .2s; text-decoration: none; }
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 28px; height: 28px; fill: var(--brand-white); }
+
+/* ============================================================
+   RESPONSIVE — copied + extended from index.html
+   ============================================================ */
+@media (max-width: 1200px) {
+  .nav-links { gap: 16px; font-size: 13px; }
+  .header-search { flex-basis: 220px; }
+}
+@media (max-width: 992px) {
+  .main-header { flex-wrap: wrap; }
+  .header-search { order: 3; flex: 1 1 100%; }
+  .hero-carousel { height: 420px; }
+  .hero-slide { width: 60%; }
+  .detail-grid, .preetika-grid, .consultation-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .test-grid, .minikits-grid { grid-template-columns: repeat(2, 1fr); }
+  .pre-footer, .footer-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-photo { flex: 0 0 50%; }
+  .included-card { flex: 0 0 calc(50% - 20px); }
+}
+@media (max-width: 600px) {
+  .hero-carousel { height: 320px; }
+  .hero-slide { width: 78%; }
+  .hero-slide.is-prev { transform: translate(-135%, -50%) scale(0.75); }
+  .hero-slide.is-next { transform: translate(35%, -50%) scale(0.75); }
+  .course-detail-section .course-main-title { font-size: 38px; }
+  .test-grid, .minikits-grid, .pre-footer, .footer-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-photo { flex: 0 0 80%; }
+  .included-card { flex: 0 0 calc(85% - 20px); }
+  .footer-wrapper { padding-top: 60px; }
+  .footer-wave { height: 60px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .subscribe-form, .footer-desc { max-width: 100%; }
+  .preetika-section { padding: 60px 6%; }
+  .preetika-wave { height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER — exact from index.html ═══ -->
+<div class="top-bar">The Most awaited Online Courses are here</div>
+<header class="main-header">
+  <div class="logo">
+    <div class="logo-top">ELLEMENT <sup>Co.™</sup></div>
+    <div class="logo-sub">NAIL ACADEMY</div>
+  </div>
+  <div class="header-search">
+    <input type="text" placeholder="" aria-label="Search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+  </div>
+  <nav class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="nav-italic">Online Courses</a>
+    <a href="#" class="nav-italic">Look &amp; Learn</a>
+    <a href="#" class="nav-italic">Mini Kits</a>
+    <a href="#" class="nav-italic">Setup your own Salon</a>
+  </nav>
+  <button class="btn-phone">+91-8879192901</button>
+</header>
+
+<!-- ═══ HERO VIDEO CAROUSEL — cream bg, blue slides (same as home) ═══ -->
+<section class="hero-section">
+  <div class="hero-carousel" id="heroCarousel">
+    <div class="hero-slide">
+      <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="hero-slide">
+      <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="hero-slide">
+      <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="hero-slide">
+      <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="hero-slide">
+      <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+  </div>
+  <div class="dots-pagination" id="heroDots"></div>
+</section>
+
+<!-- ═══ COURSE DETAIL — pink ═══ -->
+<section class="course-detail-section">
+  <h1 class="course-main-title">Online DIY Nail Art Workshop</h1>
+  <p class="course-tagline">The most awaited workshop, this rainy season</p>
+
+  <div class="detail-grid">
+    <div class="detail-left">
+      <h2>Price of the course</h2>
+      <span class="price-pill">₹2999 (Only workshop)</span>
+      <span class="price-pill">₹2999 (with kit)</span>
+      <p class="kit-note">
+        <b>With Kit includes:</b>
+        5 nail polishes · Ombre brush · Nail stickers · Corrector pen · Tools · Top coat · Base coat
+      </p>
+      <button class="btn-booknow">Book now</button>
+    </div>
+    <div class="kit-photo-box">
+      <!-- Replace with: <img src="public/kit_photo.jpg" alt="DIY Workshop Kit"> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT'S INCLUDED — cream ═══ -->
+<section class="included-section">
+  <h2 class="section-title" style="font-family:var(--display);font-size:48px;">What all is included ?</h2>
+  <div class="included-carousel" id="includedCarousel">
+    <div class="included-card">
+      <div class="included-img"><!-- <img src="public/kit1.jpg" alt="Kit contents"> --></div>
+      <div class="included-copy">
+        <h4>With Kit includes:</h4>
+        <p>5 nail polishes · Ombre brush · Nail stickers · Corrector pen · Tools · Top coat · Base coat</p>
+      </div>
+    </div>
+    <div class="included-card">
+      <div class="included-img"><!-- <img src="public/kit2.jpg" alt="Kit contents"> --></div>
+      <div class="included-copy">
+        <h4>With Kit includes:</h4>
+        <p>5 nail polishes · Ombre brush · Nail stickers · Corrector pen · Tools · Top coat · Base coat</p>
+      </div>
+    </div>
+    <div class="included-card">
+      <div class="included-img"><!-- <img src="public/kit3.jpg" alt="Kit contents"> --></div>
+      <div class="included-copy">
+        <h4>With Kit includes:</h4>
+        <p>5 nail polishes · Ombre brush · Nail stickers · Corrector pen · Tools · Top coat · Base coat</p>
+      </div>
+    </div>
+  </div>
+  <div class="dots-pagination" id="includedDots"></div>
+</section>
+
+<!-- ═══ MEET PREETIKA SINGH — plain pink, no waves ═══ -->
+<section class="preetika-section">
+  <div class="preetika-inner">
+    <div class="preetika-grid">
+      <div class="preetika-text">
+        <h3>Meet</h3>
+        <h2>Preetika Singh</h2>
+        <span class="role">(Brand Technical Head)</span>
+        <p>Preetika Singh is the Brand Technical Head and Nail Educator at Ellement Co. Nail Academy. With over 7 years of experience in the nail industry, she has trained and mentored countless aspiring nail artists, helping them grow from curious beginners into confident professionals.</p>
+        <p>Acrylics and miniature nail art are her biggest passions, she finds something truly magical about creating intricate, detailed designs on such a small canvas. For Preetika, great nail art lives in the details, and she's passionate about helping students develop that same precision and eye for craft.</p>
+        <p>Driven by a deep love for the industry, she's dedicated to inspiring, guiding, and helping every student achieve their best, because passion deserves the right mentorship to become a real career.</p>
+      </div>
+      <div class="preetika-photo">
+        <!-- <img src="public/Preetika_singh.jpg" alt="Preetika Singh"> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS — cream bg, blue icons, pink Chonburi labels ═══ -->
+<section class="stats-section">
+  <div class="stats-grid">
+
+    <!-- Icon 1: thumbs-up with smiley -->
+    <div class="stat-item">
+      <div class="stat-icon-wrap">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- smiley face circle -->
+          <circle cx="52" cy="18" r="14" fill="#a0b8e1"/>
+          <circle cx="48" cy="15" r="2.5" fill="white"/>
+          <circle cx="56" cy="15" r="2.5" fill="white"/>
+          <path d="M47 21 Q52 26 57 21" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- phone/device body -->
+          <rect x="6" y="42" width="4" height="10" rx="1" fill="#a0b8e1" opacity="0.5"/>
+          <!-- thumb body -->
+          <rect x="10" y="36" width="16" height="24" rx="3" fill="#a0b8e1"/>
+          <!-- thumb up finger -->
+          <path d="M26 52 H44 a6 6 0 0 0 5.7-4.2 l3-12 A4 4 0 0 0 49 32 H40 V24 a6 6 0 0 0-6-6 c-2 0-2.5 1-2.5 2.5 V34 L26 40 Z" fill="#a0b8e1"/>
+        </svg>
+      </div>
+      <div class="stat-label">100 +<br>Satisfied Students</div>
+    </div>
+
+    <!-- Icon 2: speech bubble with stars + people -->
+    <div class="stat-item">
+      <div class="stat-icon-wrap">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- speech bubble -->
+          <rect x="10" y="6" width="60" height="38" rx="8" fill="none" stroke="#a0b8e1" stroke-width="3"/>
+          <path d="M28 44 L20 56 L36 44 Z" fill="#a0b8e1"/>
+          <!-- stars -->
+          <text x="18" y="30" font-family="serif" font-size="18" fill="#a0b8e1">★★★</text>
+          <!-- three people icons -->
+          <circle cx="22" cy="66" r="5" fill="#a0b8e1"/>
+          <path d="M12 78 Q22 72 32 78" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="64" r="5" fill="#a0b8e1"/>
+          <path d="M30 76 Q40 70 50 76" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="58" cy="66" r="5" fill="#a0b8e1"/>
+          <path d="M48 78 Q58 72 68 78" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="stat-label">Amazing feedback<br>from students</div>
+    </div>
+
+    <!-- Icon 3: thumbs-up with smiley (repeat) -->
+    <div class="stat-item">
+      <div class="stat-icon-wrap">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="52" cy="18" r="14" fill="#a0b8e1"/>
+          <circle cx="48" cy="15" r="2.5" fill="white"/>
+          <circle cx="56" cy="15" r="2.5" fill="white"/>
+          <path d="M47 21 Q52 26 57 21" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <rect x="6" y="42" width="4" height="10" rx="1" fill="#a0b8e1" opacity="0.5"/>
+          <rect x="10" y="36" width="16" height="24" rx="3" fill="#a0b8e1"/>
+          <path d="M26 52 H44 a6 6 0 0 0 5.7-4.2 l3-12 A4 4 0 0 0 49 32 H40 V24 a6 6 0 0 0-6-6 c-2 0-2.5 1-2.5 2.5 V34 L26 40 Z" fill="#a0b8e1"/>
+        </svg>
+      </div>
+      <div class="stat-label">100 +<br>Satisfied Students</div>
+    </div>
+
+    <!-- Icon 4: speech bubble with stars + people (repeat) -->
+    <div class="stat-item">
+      <div class="stat-icon-wrap">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="60" height="38" rx="8" fill="none" stroke="#a0b8e1" stroke-width="3"/>
+          <path d="M28 44 L20 56 L36 44 Z" fill="#a0b8e1"/>
+          <text x="18" y="30" font-family="serif" font-size="18" fill="#a0b8e1">★★★</text>
+          <circle cx="22" cy="66" r="5" fill="#a0b8e1"/>
+          <path d="M12 78 Q22 72 32 78" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="64" r="5" fill="#a0b8e1"/>
+          <path d="M30 76 Q40 70 50 76" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="58" cy="66" r="5" fill="#a0b8e1"/>
+          <path d="M48 78 Q58 72 68 78" stroke="#a0b8e1" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="stat-label">Amazing feedback<br>from students</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ STUDENT TESTIMONIALS — pink, exact match to test-section ═══ -->
+<section class="test-section">
+  <h2 class="section-title">Student Testimonials</h2>
+  <div class="test-grid">
+    <div class="test-box">
+      <button class="play-btn" aria-label="Play testimonial 1"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="test-box">
+      <button class="play-btn" aria-label="Play testimonial 2"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+    <div class="test-box">
+      <button class="play-btn" aria-label="Play testimonial 3"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STUDENT GALLERY — cream ═══ -->
+<section class="gallery-section">
+  <h2 class="section-title">Student gallery</h2>
+  <div class="gallery-strip" id="galleryStrip">
+    <div class="gallery-photo"><!-- <img src="public/gallery1.jpg" alt="Student work"> --></div>
+    <div class="gallery-photo"><!-- <img src="public/gallery2.jpg" alt="Student work"> --></div>
+    <div class="gallery-photo"><!-- <img src="public/gallery3.jpg" alt="Student work"> --></div>
+    <div class="gallery-photo"><!-- <img src="public/gallery4.jpg" alt="Student work"> --></div>
+    <div class="gallery-photo"><!-- <img src="public/gallery5.jpg" alt="Student work"> --></div>
+  </div>
+  <div class="dots-pagination" id="galleryDots"></div>
+</section>
+
+<!-- ═══ CONSULTATION — exact copy from index.html ═══ -->
+<section class="consultation-section">
+  <h2 class="section-title">Call us for free consultation</h2>
+  <div class="consultation-grid">
+    <div class="consultation-box">
+      <!-- <img src="public/Call_us_for_free_consultation_800_x_600.jpg" alt="Call us for free consultation"> -->
+    </div>
+    <div class="consultation-form">
+      <div class="form-title">Form</div>
+      <div class="form-fields">
+        <input type="text"  placeholder="Name" required>
+        <input type="tel"   placeholder="Phone Number" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text"  placeholder="Place">
+        <textarea           placeholder="Your Message"></textarea>
+        <button type="button" class="btn-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MINI KITS — cream with wavy borders (exact from index.html) ═══ -->
+<section class="minikits-section">
+  <h2 class="section-title">Mini kits</h2>
+  <div class="minikits-grid">
+    <div class="minikit-col">
+      <div class="minikit-box"><!-- <img src="public/DIY_workshop_kit.jpg" alt="DIY Workshop Kit"> --></div>
+      <button class="minikit-pill">Shop now!</button>
+    </div>
+    <div class="minikit-col">
+      <div class="minikit-box"><!-- <img src="public/Nail_anatomy_workshop_kit.jpg" alt="Nail Anatomy Kit"> --></div>
+      <button class="minikit-pill">Shop now!</button>
+    </div>
+    <div class="minikit-col">
+      <div class="minikit-box"><!-- <img src="public/Press_on_workshop_kit_.jpg" alt="Press On Kit"> --></div>
+      <button class="minikit-pill">Shop now!</button>
+    </div>
+  </div>
+</section>
+
+<!--
+  Wave transition: cream (minikits) → pink strip → blue (pre-footer)
+  Image 1 shows: cream scallop bumps pointing DOWN into pink, then pink band, then blue.
+  We use a pink section with the SAME wave technique as founder-section in index.html:
+  • top wave: cream fills from above, pink bumps rise (= cream hangs down into pink)
+  • bottom wave: blue fills from below, pink bumps remain (= pink hangs down into blue)
+-->
+<div class="bridge-wave-section" aria-hidden="true">
+  <!-- TOP: cream section above → cream bumps drip DOWN into pink (founder-wave--top pattern) -->
+  <div class="bridge-wave-top">
+    <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fbf4e6" d="M0,50 C37.5,32 112.5,32 150,50 C187.5,68 262.5,68 300,50 C337.5,32 412.5,32 450,50 C487.5,68 562.5,68 600,50 C637.5,32 712.5,32 750,50 C787.5,68 862.5,68 900,50 C937.5,32 1012.5,32 1050,50 C1087.5,68 1162.5,68 1200,50 L1200,0 L0,0 Z"></path>
+    </svg>
+  </div>
+  <!-- BOTTOM: blue pre-footer below → blue bumps rise UP into pink -->
+  <div class="bridge-wave-bottom">
+    <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#a0b8e1" d="M0,50 C37.5,68 112.5,68 150,50 C187.5,32 262.5,32 300,50 C337.5,68 412.5,68 450,50 C487.5,32 562.5,32 600,50 C637.5,68 712.5,68 750,50 C787.5,32 862.5,32 900,50 C937.5,68 1012.5,68 1050,50 C1087.5,32 1162.5,32 1200,50 L1200,100 L0,100 Z"></path>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ PRE-FOOTER — exact from index.html ═══ -->
+<div class="pre-footer">
+  <div class="pf-item">
+    <div class="pf-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg> Certified Training</div>
+    <p>Every course is led by professionally certified nail educators with real salon experience.</p>
+  </div>
+  <div class="pf-item">
+    <div class="pf-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Always Here for You</div>
+    <p>Call or WhatsApp us anytime — +91 88791 92901<br>We respond within a few hours, always.</p>
+  </div>
+  <div class="pf-item">
+    <div class="pf-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Bulk &amp; Salon Enquiries</div>
+    <p>Training your team or setting up a salon?<br>Reach us at hello@ecna.in</p>
+  </div>
+  <div class="pf-item">
+    <div class="pf-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Visit Our Academy</div>
+    <p>ECNA, C-402 Morya House, Andheri West<br>Mumbai — 400104</p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER — exact from index.html ═══ -->
+<footer class="footer-wrapper">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="wave-fill" d="M0,0 L0,20 C 300,90 550,80 850,35 C 1150,-10 1350,20 1440,90 L1440,0 Z"></path>
+      <path class="wave-stroke" d="M0,25 C 300,95 550,85 850,40 C 1150,-5 1350,25 1440,95"></path>
+    </svg>
+  </div>
+
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+          Ellement Co. Nail Academy
+        </div>
+        <p class="footer-desc">India's most hands-on nail academy. Built for beginners, designed for professionals.</p>
+        <div class="footer-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>New shades, tutorials, exclusive offers.</p>
+          <div class="subscribe-form">
+            <input type="email" placeholder="Your email address">
+            <button>Subscribe</button>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.95C1 8.12 1 12 1 12s0 3.88.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95C23 15.88 23 12 23 12s0-3.88-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>COURSES</h4>
+        <ul>
+          <li><a href="#">Online DIY Nail Art Workshop</a></li>
+          <li><a href="#">Nail Anatomy Workshop</a></li>
+          <li><a href="#">Gel Extension Course</a></li>
+          <li><a href="#">Acrylic Extension Course</a></li>
+          <li><a href="#">Advanced Nail Art</a></li>
+          <li><a href="#">Pro Nail Tech Course</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>NAVIGATE</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Upcoming Workshops</a></li>
+          <li><a href="#">Student Gallery</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Book a Consultation</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Ellement Co. Nail Academy. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Shipping Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/918879192901" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 1.9.8 2 .1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.3.1 1.6.8 1.9.9.3.2.5.2.5.4.1.1.1.7-.1 1.2z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   HERO CAROUSEL — exact copy of index.html logic
+   ============================================================ */
+(function () {
+  const carousel = document.getElementById('heroCarousel');
+  const slides = Array.from(carousel.querySelectorAll('.hero-slide'));
+  const dotsWrap = document.getElementById('heroDots');
+  const total = slides.length;
+  let current = 0;
+  let autoplayTimer = null;
+  const AUTOPLAY_MS = 4000;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot';
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', () => { goTo(i); restartAutoplay(); });
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function render() {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+      const prev = (current - 1 + total) % total;
+      const next = (current + 1) % total;
+      if (i === current) slide.classList.add('is-active');
+      else if (i === prev) slide.classList.add('is-prev');
+      else if (i === next) slide.classList.add('is-next');
+      else slide.classList.add('is-hidden');
+      const v = slide.querySelector('video');
+      if (v) { if (i === current) { v.muted = true; v.play().catch(() => {}); } else { v.pause(); } }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function goTo(i) { current = (i + total) % total; render(); }
+  const nextSlide = () => goTo(current + 1);
+  const prevSlide = () => goTo(current - 1);
+  function startAutoplay() { if (reducedMotion) return; autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS); }
+  function restartAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
+
+  slides.forEach((slide) => {
+    slide.addEventListener('click', () => {
+      if (slide.classList.contains('is-prev')) { prevSlide(); restartAutoplay(); }
+      else if (slide.classList.contains('is-next')) { nextSlide(); restartAutoplay(); }
+    });
+  });
+
+  let startX = null;
+  carousel.addEventListener('pointerdown', e => { startX = e.clientX; });
+  window.addEventListener('pointerup', e => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) { dx < 0 ? nextSlide() : prevSlide(); restartAutoplay(); }
+    startX = null;
+  });
+
+  let wheelLock = false;
+  carousel.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    if (wheelLock) return;
+    wheelLock = true;
+    e.deltaX > 0 ? nextSlide() : prevSlide();
+    restartAutoplay();
+    setTimeout(() => { wheelLock = false; }, 500);
+  }, { passive: false });
+
+  carousel.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+  carousel.addEventListener('mouseleave', restartAutoplay);
+  render();
+  startAutoplay();
+})();
+
+/* Included carousel dots */
+(function () {
+  const track = document.getElementById('includedCarousel');
+  const wrap  = document.getElementById('includedDots');
+  const cards = track.children.length;
+  for (let i = 0; i < cards; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Item ' + (i + 1));
+    d.addEventListener('click', () => { track.scrollTo({ left: (track.scrollWidth - track.clientWidth) * (i / (cards - 1)), behavior: 'smooth' }); });
+    wrap.appendChild(d);
+  }
+  track.addEventListener('scroll', () => {
+    const p = Math.round(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth) * (cards - 1));
+    Array.from(wrap.children).forEach((d, i) => d.classList.toggle('active', i === p));
+  });
+})();
+
+/* Gallery dots */
+(function () {
+  const strip = document.getElementById('galleryStrip');
+  const wrap  = document.getElementById('galleryDots');
+  const n = strip.children.length;
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Gallery page ' + (i + 1));
+    d.addEventListener('click', () => { strip.scrollTo({ left: strip.clientWidth * i, behavior: 'smooth' }); });
+    wrap.appendChild(d);
+  }
+  strip.addEventListener('scroll', () => {
+    const p = Math.round(strip.scrollLeft / Math.max(1, strip.clientWidth));
+    Array.from(wrap.children).forEach((d, i) => d.classList.toggle('active', i === p));
+  });
+})();
+</script>
+</body>
+</html>
