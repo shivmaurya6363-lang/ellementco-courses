@@ -11,7 +11,6 @@
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-   
 :root {
   --brand-pink: #ee6396;
   --brand-pink-light: #f48ab0;
@@ -165,16 +164,14 @@ button { font-family: inherit; cursor: pointer; border: none; }
    ============================================================ */
 .gallery-section { background-color: var(--brand-cream); padding: 60px 0 70px; }
 .gallery-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 48px; margin-bottom: 36px; font-weight: 400; }
-.gallery-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 3px; }
-.gallery-strip::-webkit-scrollbar { display: none; }
-.gallery-photo { flex: 0 0 25%; height: 320px; scroll-snap-align: start; overflow: hidden; position: relative; }
-.gallery-photo:nth-child(1) { background: linear-gradient(120deg,#e8d5c4,#c9a890); }
-.gallery-photo:nth-child(2) { background: linear-gradient(120deg,#c8dfe8,#9bbdcd); }
-.gallery-photo:nth-child(3) { background: linear-gradient(120deg,#e0dce8,#b0a8c9); }
-.gallery-photo:nth-child(4) { background: linear-gradient(120deg,#e8c8d8,#c98fb0); }
-.gallery-photo:nth-child(5) { background: linear-gradient(120deg,#d0e0f4,#a0b8d8); }
-.gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-viewport { overflow: hidden; width: 100%; position: relative; touch-action: pan-y; }
+.gallery-strip { display: flex; gap: 3px; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1); will-change: transform; cursor: grab; }
+.gallery-strip.is-dragging { transition: none; cursor: grabbing; }
+.gallery-photo { flex: 0 0 25%; height: 320px; overflow: hidden; position: relative; border-radius: 4px; user-select: none; }
+.gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
 .gallery-section .dots-pagination { margin-top: 26px; }
+@media (max-width: 600px) { .gallery-photo { flex: 0 0 80%; } }
+@media (max-width: 992px) { .gallery-photo { flex: 0 0 50%; } }
 
 /* ============================================================
    CONSULTATION — pink, exact copy from index.html
@@ -298,17 +295,17 @@ button { font-family: inherit; cursor: pointer; border: none; }
 <!-- ═══ HEADER — exact from index.html ═══ -->
 <div class="top-bar">The Most awaited Online Courses are here</div>
 <header class="main-header">
-  <div class="logo">
+  <a class="logo" href="https://ellementconailacademy.graphy.com/s/pages/home-page">
     <div class="logo-top">ELLEMENT <sup>Co.™</sup></div>
     <div class="logo-sub">NAIL ACADEMY</div>
-  </div>
+  </a>
   <div class="header-search">
     <input type="text" placeholder="" aria-label="Search">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
   </div>
   <nav class="nav-links">
-    <a href="#">Home</a>
-    <a href="#" class="nav-italic">Online Courses</a>
+    <a href="https://ellementconailacademy.graphy.com/s/pages/home-page">Home</a>
+    <a href="https://ellementconailacademy.graphy.com/s/pages/courses" class="nav-italic">Online Courses</a>
     <a href="#" class="nav-italic">Look &amp; Learn</a>
     <a href="#" class="nav-italic">Mini Kits</a>
     <a href="#" class="nav-italic">Setup your own Salon</a>
@@ -509,6 +506,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 <!-- ═══ STUDENT GALLERY — cream ═══ -->
 <section class="gallery-section">
   <h2 class="section-title">Student gallery</h2>
+  <div class="gallery-viewport" id="galleryViewport">
   <div class="gallery-strip" id="galleryStrip">
     <div class="gallery-photo"><img src="public/gallery-1.jpg" alt="Student work 1"></div>
     <div class="gallery-photo"><img src="public/gallery-2.jpg" alt="Student work 2"></div>
@@ -523,6 +521,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <div class="gallery-photo"><img src="public/gallery-11.jpg" alt="Student work 11"></div>
     <div class="gallery-photo"><img src="public/gallery-12.jpg" alt="Student work 12"></div>
     <div class="gallery-photo"><img src="public/gallery-13.jpg" alt="Student work 13"></div>
+  </div>
   </div>
   <div class="dots-pagination" id="galleryDots"></div>
 </section>
@@ -617,10 +616,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="footer-logo">
+        <a class="footer-logo" href="https://ellementconailacademy.graphy.com/s/pages/home-page" style="text-decoration:none;color:inherit;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
           Ellement Co. Nail Academy
-        </div>
+        </a>
         <p class="footer-desc">India's most hands-on nail academy. Built for beginners, designed for professionals.</p>
         <div class="footer-newsletter">
           <h4>Stay in the loop</h4>
@@ -640,7 +639,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <div class="footer-col">
         <h4>COURSES</h4>
         <ul>
-          <li><a href="#">Online DIY Nail Art Workshop</a></li>
+          <li><a href="https://ellementconailacademy.graphy.com/s/pages/courses">Online DIY Nail Art Workshop</a></li>
           <li><a href="#">Nail Anatomy Workshop</a></li>
           <li><a href="#">Gel Extension Course</a></li>
           <li><a href="#">Acrylic Extension Course</a></li>
@@ -652,7 +651,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <div class="footer-col">
         <h4>NAVIGATE</h4>
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="https://ellementconailacademy.graphy.com/s/pages/home-page">Home</a></li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Upcoming Workshops</a></li>
           <li><a href="#">Student Gallery</a></li>
@@ -785,22 +784,122 @@ button { font-family: inherit; cursor: pointer; border: none; }
   });
 })();
 
-/* Gallery dots */
+/* Gallery Slider — touch, drag, autoplay, dots */
 (function () {
-  const strip = document.getElementById('galleryStrip');
-  const wrap  = document.getElementById('galleryDots');
-  const n = strip.children.length;
-  for (let i = 0; i < n; i++) {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Gallery page ' + (i + 1));
-    d.addEventListener('click', () => { strip.scrollTo({ left: strip.clientWidth * i, behavior: 'smooth' }); });
-    wrap.appendChild(d);
+  const viewport = document.getElementById('galleryViewport');
+  const strip    = document.getElementById('galleryStrip');
+  const dotsWrap = document.getElementById('galleryDots');
+  if (!strip || !viewport) return;
+
+  const photos      = Array.from(strip.children);
+  const AUTOPLAY_MS = 5000;
+  let current       = 0;
+  let autoTimer     = null;
+
+  // How many photos visible at once depends on screen width
+  function visibleCount() {
+    const vw = viewport.clientWidth;
+    if (vw <= 600)  return 1;
+    if (vw <= 992)  return 2;
+    return 4;
   }
-  strip.addEventListener('scroll', () => {
-    const p = Math.round(strip.scrollLeft / Math.max(1, strip.clientWidth));
-    Array.from(wrap.children).forEach((d, i) => d.classList.toggle('active', i === p));
+
+  // Total "pages" = total photos - (visible - 1), so last page shows last N photos
+  function totalPages() {
+    return Math.max(1, photos.length - visibleCount() + 1);
+  }
+
+  function getSlideWidth() {
+    return photos[0] ? photos[0].getBoundingClientRect().width + 3 : 0; // 3 = gap
+  }
+
+  function goTo(idx) {
+    const pages = totalPages();
+    current = Math.max(0, Math.min(idx, pages - 1));
+    const offset = current * getSlideWidth();
+    strip.style.transform = `translateX(-${offset}px)`;
+    updateDots();
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    const pages = totalPages();
+    for (let i = 0; i < pages; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Gallery page ' + (i + 1));
+      d.addEventListener('click', () => { goTo(i); restartAutoplay(); });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots() {
+    Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAutoplay() {
+    autoTimer = setInterval(() => {
+      goTo(current + 1 >= totalPages() ? 0 : current + 1);
+    }, AUTOPLAY_MS);
+  }
+
+  function restartAutoplay() {
+    clearInterval(autoTimer);
+    startAutoplay();
+  }
+
+  // Touch / pointer drag
+  let startX = null, startLeft = 0, dragging = false;
+
+  viewport.addEventListener('pointerdown', e => {
+    startX    = e.clientX;
+    startLeft = current * getSlideWidth();
+    dragging  = false;
+    strip.classList.add('is-dragging');
+    clearInterval(autoTimer);
+    viewport.setPointerCapture(e.pointerId);
   });
+
+  viewport.addEventListener('pointermove', e => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) dragging = true;
+    strip.style.transform = `translateX(-${startLeft - dx}px)`;
+  });
+
+  viewport.addEventListener('pointerup', e => {
+    if (startX === null) return;
+    strip.classList.remove('is-dragging');
+    const dx = e.clientX - startX;
+    if (dragging) {
+      const threshold = getSlideWidth() * 0.2;
+      if (dx < -threshold)      goTo(current + 1);
+      else if (dx > threshold)  goTo(current - 1);
+      else                      goTo(current);
+    }
+    startX = null;
+    dragging = false;
+    restartAutoplay();
+  });
+
+  viewport.addEventListener('pointercancel', () => {
+    strip.classList.remove('is-dragging');
+    goTo(current);
+    startX = null;
+    restartAutoplay();
+  });
+
+  // Pause on hover
+  viewport.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  viewport.addEventListener('mouseleave', restartAutoplay);
+
+  // Rebuild on resize
+  window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, totalPages() - 1)); });
+
+  // Init
+  buildDots();
+  goTo(0);
+  startAutoplay();
 })();
 </script>
 </body>
