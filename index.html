@@ -90,7 +90,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    COURSE DETAIL — pink, 2-col: left=text, right=kit photo
    ============================================================ */
 .course-detail-section { background-color: var(--brand-pink); padding: 60px 6%; }
-.course-detail-section .course-main-title { font-family: var(--display); font-weight: 400; font-size: 64px; color: var(--brand-cream); text-align: center; line-height: 1.05; margin-bottom: 8px; }
+.course-detail-section .course-main-title { font-family: var(--display); font-weight: 400; font-size: 60px; color: var(--brand-cream); text-align: center; line-height: 1.05; margin-bottom: 8px; }
 .course-detail-section .course-tagline { font-family: var(--fashion); font-style: italic; font-size: 18px; color: var(--brand-cream); text-align: center; margin-bottom: 50px; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 100%; margin: 0 auto; }
 .detail-left h2 { font-family: var(--display); font-weight: 400; font-size: 38px; color: var(--brand-cream); margin-bottom: 24px; }
@@ -123,7 +123,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    WHAT'S INCLUDED — cream, carousel like home courses
    ============================================================ */
 .included-section { background-color: var(--brand-cream); padding: 60px 6% 70px; }
-.included-section .section-title { font-family: var(--display); font-size: 48px; color: var(--brand-pink); margin-bottom: 50px; }
+.included-section .section-title { font-family: var(--display); font-size: 60px; color: var(--brand-pink); margin-bottom: 50px; }
 .included-carousel { overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 10px; padding: 6px 4px 10px; scrollbar-width: none; }
 .included-carousel::-webkit-scrollbar { display: none; }
 .included-card { flex: 0 0 calc(33.333% - 28px); scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 18px; }
@@ -163,7 +163,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    (exact match to test-section in index.html)
    ============================================================ */
 .test-section { background-color: var(--brand-pink); padding: 55px 6% 90px; }
-.test-section .section-title { color: var(--brand-cream); font-family: var(--display); font-size: 48px; margin-bottom: 45px; font-weight: 400; }
+.test-section .section-title { color: var(--brand-cream); font-family: var(--display); font-size: 60px; margin-bottom: 45px; font-weight: 400; }
 .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; max-width: 100%; margin: 0 auto; }
 .test-box { background: var(--brand-cream); border-radius: 34px; aspect-ratio: 3/4; position: relative; overflow: hidden; }
 .test-box .play-btn { border-color: var(--brand-pink); color: var(--brand-pink); width: 66px; height: 66px; }
@@ -173,7 +173,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    STUDENT GALLERY — cream, wide photo strip
    ============================================================ */
 .gallery-section { background-color: var(--brand-cream); padding: 60px 0 70px; }
-.gallery-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 48px; margin-bottom: 36px; font-weight: 400; }
+.gallery-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 60px; margin-bottom: 36px; font-weight: 400; }
 .gallery-viewport { overflow: hidden; width: 100%; position: relative; touch-action: pan-y; }
 .gallery-strip { display: flex; gap: 3px; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1); will-change: transform; cursor: grab; }
 .gallery-strip.is-dragging { transition: none; cursor: grabbing; }
@@ -187,7 +187,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    CONSULTATION — pink, exact copy from index.html
    ============================================================ */
 .consultation-section { background-color: var(--brand-pink); padding: 60px 6%; }
-.consultation-section .section-title { color: var(--brand-white); font-family: var(--display); font-size: 48px; margin-bottom: 40px; font-weight: 400; }
+.consultation-section .section-title { color: var(--brand-white); font-family: var(--display); font-size: 60px; margin-bottom: 40px; font-weight: 400; }
 .consultation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
 .consultation-box { border-radius: 30px; overflow: hidden; }
 .consultation-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -197,13 +197,13 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .form-fields input, .form-fields textarea { width: 100%; padding: 12px 16px; border: none; border-radius: 8px; background: var(--brand-white); color: var(--brand-black); font-family: var(--sans); font-size: 13px; outline: none; }
 .form-fields input::placeholder, .form-fields textarea::placeholder { color: #999; }
 .form-fields textarea { resize: none; min-height: 70px; }
-.btn-submit { align-self: flex-start; margin-top: 6px; background: var(--brand-black); color: var(--brand-white); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; border-radius: 50px; border: none; cursor: pointer; font-family: var(--sans); }
+.btn-submit { align-self: flex-start; margin-top: 6px; display: inline-block; background: var(--brand-black); color: var(--brand-white); font-size: 14px; font-weight: 600; font-family: var(--sans); letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 36px; border-radius: 50px; border: none; cursor: pointer; transition: opacity 0.2s; }
 
 /* ============================================================
    MINI KITS — cream, exact copy from index.html
    ============================================================ */
 .minikits-section { background-color: var(--brand-cream); padding: 80px 6%; }
-.minikits-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 46px; margin-bottom: 60px; }
+.minikits-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 60px; margin-bottom: 60px; }
 .minikits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; max-width: 100%; margin: 0 auto; }
 .minikit-col { display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .minikit-box { background: #fefaf2; border-radius: 22px; width: 100%; aspect-ratio: 5/6; overflow: hidden; }
@@ -283,7 +283,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   .hero-slide { width: 78%; }
   .hero-slide.is-prev { transform: translate(-135%, -50%) scale(0.75); }
   .hero-slide.is-next { transform: translate(35%, -50%) scale(0.75); }
-  .course-detail-section .course-main-title { font-size: 38px; }
+  .course-detail-section .course-main-title { font-size: 60px; }
   .test-grid, .minikits-grid, .pre-footer, .footer-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .gallery-photo { flex: 0 0 80%; }
@@ -311,10 +311,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .minikit-arrow svg { stroke: var(--brand-white); }
 .minikit-arrow:hover { background: var(--brand-blue-dark); }
 
-/* ── TESTIMONIALS SLIDER ── */
-.test-slider-viewport { overflow: hidden; }
-.test-grid { display: flex; gap: 24px; transition: transform 0.45s cubic-bezier(0.25,0.8,0.25,1); will-change: transform; max-width: none; margin: 0; }
-.test-box { flex: 0 0 calc(33.333% - 16px); }
 
 /* ── DESKTOP 3-UP TESTIMONIALS ── */
 @media (min-width: 601px) {
@@ -342,7 +338,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   .test-grid { gap: 20px; }
   .test-box { flex: 0 0 calc(50% - 10px); }
   .two-col, .consultation-grid { grid-template-columns: 1fr; }
-  .media-block { margin: 0 auto; }
+  .media-block { aspect-ratio: 4 / 5; width: 100%; max-width: 520px; border-radius: 34px; overflow: hidden; }
   .pre-footer, .footer-grid { grid-template-columns: 1fr 1fr; }
   .wywg-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 20px; }
   .contact-row { grid-template-columns: 1fr; gap: 22px; max-width: 420px; }
@@ -353,7 +349,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 @media (max-width: 600px) {
 
   /* Typography scale: 3 sizes only — display/heading/body */
-  .section-title { font-size: 28px !important; margin-bottom: 20px !important; }
+  .section-title { font-size: 60px !important; margin-bottom: 20px !important; }
   h2, .course-header h2, .text-col h2 { font-size: 26px !important; line-height: 1.25 !important; }
   h3, .card-title { font-size: 18px !important; }
   body, p, li, a { font-size: 13px !important; }
@@ -450,128 +446,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
   .wywg-item img { width: 60px; height: 60px; }
   .wywg-item p { font-size: 13px !important; }
 
-  /* ── TESTIMONIALS ── */
-  .test-section { padding: 50px 5% 50px !important; }
-  .test-section .section-title { font-size: 26px !important; margin-bottom: 34px !important; }
-  .test-slider-viewport { overflow: hidden; touch-action: pan-y; padding-left: 44px; }
-  .test-grid { cursor: grab; margin-left: -44px; }
-  .test-grid.is-dragging { transition: none !important; cursor: grabbing; }
-  .test-box { flex: 0 0 88% !important; }
-
-  /* ── FOUNDER ── */
-  .founder-section { padding: 50px 5% !important; }
-  .two-col { grid-template-columns: 1fr !important; gap: 28px !important; }
-  .media-block { max-width: 100%; }
-  .founder-wave, .founder-wave--top, .founder-wave--bottom { height: 40px; }
-  .btn-whatsapp { font-size: 16px; padding: 12px 28px; }
-
-  /* ── CONSULTATION ── */
-  .consultation-section { padding: 50px 5% 50px !important; }
-  .consultation-grid { grid-template-columns: 1fr !important; gap: 20px !important; margin-top: 30px; }
-  .consultation-form { padding: 24px; }
-  .form-title { font-size: 26px !important; }
-
-  /* ── MINI KITS ── */
-  .minikits-section { padding: 50px 5% 50px !important; }
-  .minikits-slider-wrap { max-width: 100%; gap: 10px; }
-  .minikit-arrow { width: 38px; height: 38px; font-size: 18px; }
-  .minikit-name { font-size: 18px !important; }
-
-  /* ── FAQ ── */
-  .faq-section { padding: 50px 5% 50px !important; }
-
-  /* ── CONTACT ── */
-  .contact-section { padding: 50px 5% 50px !important; }
-  .contact-row { grid-template-columns: 1fr !important; gap: 16px !important; max-width: 100% !important; }
-  .contact-pill { font-size: 16px !important; padding: 14px 20px; }
-
-  /* ── PRE-FOOTER ── */
-  .pre-footer { grid-template-columns: 1fr 1fr !important; gap: 20px; padding: 30px 5% !important; }
-
-  /* ── FOOTER ── */
-  .footer-wrapper { padding-top: 50px; }
-  .footer-wave { height: 50px; }
-  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; }
-  .footer-col:first-child { grid-column: 1 / -1; }
-  .footer-col h4 { font-size: 11px; margin-bottom: 10px; }
-  .footer-col ul li a { font-size: 12px !important; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .footer-bottom-links { flex-wrap: wrap; gap: 8px; }
-  .subscribe-form { max-width: 100%; }
-  .footer-desc { max-width: 100%; }
-  .products-image { height: 200px; }
-
-  /* ── PRODUCTS FULL BLEED MOBILE ── */
-  .products-section { padding: 20px 0 0 !important; }
-  .products-wave { height: 40px; }
-  .products-wave--top { margin-bottom: -39px; }
-  .products-wave--bottom { margin-top: -39px; }
-  .products-image { height: 240px; }
-
-  /* ── FOUNDER IMAGE FULL WIDTH ── */
-  .founder-section { padding: 40px 0 40px !important; }
-  .founder-inner { padding: 50px 5%; }
-  .two-col { grid-template-columns: 1fr !important; gap: 0 !important; }
-  /* .media-block { max-width: 100% !important; border-radius: 0 !important; aspect-ratio: 4/3 !important; } */
-  .text-col { padding: 24px 5% 0; }
-
-  /* ── MINI KITS: hide desktop grid, show mobile slider ── */
-  .minikits-grid { display: none !important; }
-  #mkSlider { display: flex !important; }
-  #mkDots { display: flex !important; }
-  .minikits-slider-wrap { max-width: 100%; gap: 10px; }
-
-  /* ── CALENDAR: rings stay above scroll wrapper ── */
-  .calendar-board { overflow: visible !important; height: auto !important; max-height: none !important; padding: 14px 8px 14px !important; }
-  .calendar-scroll-wrap {
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--brand-pink) var(--brand-cream);
-    height: auto !important;
-    max-height: none !important;
-  }
-  .calendar-scroll-wrap::-webkit-scrollbar { height: 4px; width: 0px; }
-  .calendar-scroll-wrap::-webkit-scrollbar-track { background: var(--brand-cream); }
-  .calendar-scroll-wrap::-webkit-scrollbar-thumb { background: var(--brand-pink); border-radius: 4px; }
-  .calendar-grid { min-width: 490px !important; height: auto !important; }
-  .calendar-cell { height: auto !important; min-height: 55px; }
-  .notebook-rings { padding: 0 8px; top: -10px; }
-  .ring { width: 8px !important; height: 18px !important; border-radius: 6px; }
-  /* Kill any inherited height/overflow from the platform wrapper */
-.calendar-section {
-  height: auto !important;
-  max-height: none !important;
-  overflow: visible !important;
-}
-
-.calendar-board {
-  height: auto !important;
-  max-height: none !important;
-  overflow-y: visible !important;   /* no vertical scroll here */
-  overflow-x: visible !important;
-}
-
-.calendar-scroll-wrap {
-  height: auto !important;
-  max-height: none !important;
-  overflow-y: hidden !important;    /* explicitly kill vertical scrollbar */
-  overflow-x: auto !important;      /* keep only the horizontal one */
-  padding-bottom: 19px;
-}
-
-/* Belt-and-suspenders: if Graphy wraps your embed in its own div, 
-   target it too — it usually gets a generic class like this */
-.calendar-section, 
-.calendar-section * {
-  overflow-anchor: none;
-}
-}
-
+  
 /* ── VERY SMALL: 320-479px (small Android, SE) ── */
 @media (max-width: 479px) {
-  .section-title { font-size: 24px !important; }
+  .section-title { font-size: 60px !important; }
   h2, .course-header h2 { font-size: 22px !important; }
   .hero-carousel { height: 260px; }
   .wywg-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 10px; }
@@ -590,7 +468,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 @media (max-width: 600px) {
   .detail-grid, .preetika-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
   .kit-photo-box { min-height: 220px; }
-  .course-main-title { font-size: 30px !important; }
+  .course-main-title { font-size: 60px !important; }
   .included-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
   .included-card { flex: 0 0 85% !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
@@ -787,7 +665,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       </div>
     </div>
     <div class="included-card">
-      <div class="included-img"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit_.jpg" alt="Press On Kit"></div>
+      <div class="included-img"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit.jpg" alt="Press On Kit"></div>
       <div class="included-copy">
         <h4>With Kit includes:</h4>
         <p>5 nail polishes · Ombre brush · Nail stickers · Corrector pen · Tools · Top coat · Base coat</p>
@@ -990,7 +868,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <button class="minikit-pill">Shop now!</button>
     </div>
     <div class="minikit-col">
-      <div class="minikit-box"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit_.jpg" alt="Press On Kit"></div>
+      <div class="minikit-box"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit.jpg" alt="Press On Kit"></div>
       <button class="minikit-pill">Shop now!</button>
     </div>
   </div>
@@ -1010,7 +888,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           <button class="minikit-pill">Shop now!</button>
         </div>
         <div class="minikit-col">
-          <div class="minikit-box"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit_.jpg" alt="Press On Kit"></div>
+          <div class="minikit-box"><img src="https://cdn.shopify.com/s/files/1/0711/5725/2400/files/ellementco-images-graphy-Press_on_workshop_kit.jpg" alt="Press On Kit"></div>
           <button class="minikit-pill">Shop now!</button>
         </div>
       </div>
@@ -1372,100 +1250,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
   overlay.addEventListener('click', closeD);
 })();
 
-/* ── TESTIMONIALS SLIDER ── */
-(function () {
-  const viewport = document.getElementById('testViewport');
-  const grid     = document.getElementById('testGrid');
-  const dotsWrap = document.getElementById('testDots');
-  if (!viewport || !grid) return;
-
-  const boxes = Array.from(grid.children);
-  let current = 0, startX = null, dragging = false, autoT = null;
-
-  function isMobile() { return window.innerWidth <= 600; }
-  function visibleCount() { return isMobile() ? 1 : (window.innerWidth <= 992 ? 2 : 3); }
-  function gap() { return isMobile() ? 14 : 24; }
-  function slideW() { return boxes[0] ? boxes[0].getBoundingClientRect().width + gap() : 0; }
-  function maxCurrent() { return Math.max(0, boxes.length - visibleCount()); }
-
-  function buildDots() {
-    if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    const pages = maxCurrent() + 1;
-    // Hide dots when all items are visible (no scrolling needed)
-    if (pages <= 1) { dotsWrap.style.display = 'none'; return; }
-    dotsWrap.style.display = 'flex';
-    for (let i = 0; i < pages; i++) {
-      const d = document.createElement('button');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Testimonial ' + (i + 1));
-      d.addEventListener('click', () => { goTo(i); restartAuto(); });
-      dotsWrap.appendChild(d);
-    }
-  }
-
-  function updateDots() {
-    if (!dotsWrap) return;
-    Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  function goTo(i) {
-    current = Math.max(0, Math.min(i, maxCurrent()));
-    grid.style.transform = 'translateX(-' + (current * slideW()) + 'px)';
-    updateDots();
-  }
-
-  function startAuto() {
-    if (!isMobile()) return;
-    autoT = setInterval(() => goTo(current >= maxCurrent() ? 0 : current + 1), 4000);
-  }
-  function restartAuto() { clearInterval(autoT); startAuto(); }
-
-  viewport.addEventListener('pointerdown', e => {
-    startX = e.clientX; dragging = false;
-    grid.classList.add('is-dragging');
-    clearInterval(autoT);
-    viewport.setPointerCapture(e.pointerId);
-  });
-  viewport.addEventListener('pointermove', e => {
-    if (startX === null) return;
-    if (Math.abs(e.clientX - startX) > 5) dragging = true;
-    const vw = viewport.clientWidth;
-    const sw = slideW();
-    let baseOffset;
-    if (current === 0) { baseOffset = 0; }
-    else if (current >= maxCurrent()) { baseOffset = Math.max(0, boxes.length * sw - vw); }
-    else { baseOffset = Math.max(0, (current * sw) - peekOffset()); }
-    grid.style.transform = 'translateX(-' + (baseOffset - (e.clientX - startX)) + 'px)';
-  });
-  viewport.addEventListener('pointerup', e => {
-    if (startX === null) return;
-    grid.classList.remove('is-dragging');
-    const dx = e.clientX - startX;
-    if (dragging) {
-      if (dx < -40) goTo(current + 1);
-      else if (dx > 40) goTo(current - 1);
-      else goTo(current); // snap back
-    }
-    startX = null; dragging = false; restartAuto();
-  });
-  viewport.addEventListener('pointercancel', () => {
-    grid.classList.remove('is-dragging');
-    goTo(current); startX = null; restartAuto();
-  });
-  viewport.addEventListener('mouseenter', () => clearInterval(autoT));
-  viewport.addEventListener('mouseleave', restartAuto);
-
-  function init() {
-    grid.style.transform = '';
-    current = 0;
-    buildDots();
-    goTo(0);
-    if (isMobile()) startAuto();
-  }
-  window.addEventListener('resize', () => { clearInterval(autoT); init(); });
-  init();
-})();
 
 /* ── MINI KITS SLIDER ── */
 (function () {
@@ -1613,119 +1397,86 @@ button { font-family: inherit; cursor: pointer; border: none; }
   startAutoplay();
 })();
 
-/* ── TESTIMONIALS: arrows + sound toggle ── */
+
+/* ── TESTIMONIALS CAROUSEL ── */
 (function() {
   var viewport = document.getElementById('testViewport');
-  var grid     = document.getElementById('testGrid');
+  var track    = document.getElementById('testGrid');
   var dotsWrap = document.getElementById('testDots');
   var btnPrev  = document.getElementById('testPrev');
   var btnNext  = document.getElementById('testNext');
-  if (!viewport || !grid) return;
-
+  if (!viewport || !track) return;
   var current = 0;
-
-  function boxes() { return Array.from(grid.querySelectorAll('.test-box')); }
-  function isMobile() { return window.innerWidth <= 600; }
-  function visibleCount() { return isMobile() ? 1 : (window.innerWidth <= 992 ? 2 : 3); }
-  function gap() {
-    var g = parseInt(getComputedStyle(grid).gap || getComputedStyle(grid).columnGap || '0');
-    return isNaN(g) ? 28 : g;
+  function getBoxes()  { return Array.from(track.children); }
+  function visible()   { return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3; }
+  function getGap()    { return 28; }
+  function boxW()      { var vw = viewport.clientWidth; return (vw - getGap() * 2) / 3 + getGap(); }
+  function maxSlide()  { return Math.max(0, getBoxes().length - visible()); }
+  function moveTo(i) {
+    current = Math.max(0, Math.min(i, maxSlide()));
+    track.style.transform = 'translateX(-' + (current * boxW()) + 'px)';
+    if (dotsWrap) Array.from(dotsWrap.children).forEach(function(d,i){ d.classList.toggle('active', i===current); });
+    if (btnPrev) btnPrev.disabled = current <= 0;
+    if (btnNext) btnNext.disabled = current >= maxSlide();
   }
-  function slideW() {
-    var b = boxes();
-    return b.length ? b[0].getBoundingClientRect().width + gap() : 0;
-  }
-  function maxIdx() { return Math.max(0, boxes().length - visibleCount()); }
-
-  function updateArrows() {
-    if (!btnPrev || !btnNext) return;
-    var max = maxIdx();
-    btnPrev.disabled = current <= 0;
-    btnNext.disabled = current >= max;
-    btnPrev.style.visibility = max > 0 ? 'visible' : 'hidden';
-    btnNext.style.visibility = max > 0 ? 'visible' : 'hidden';
-  }
-
-  function goTo(i) {
-    var max = maxIdx();
-    current = Math.max(0, Math.min(i, max));
-    var sw = slideW();
-    var offset;
-    if (isMobile()) {
-      var vw = viewport.clientWidth;
-      offset = current === 0 ? 0 : current >= max ? Math.max(0, boxes().length * sw - vw) : Math.max(0, current * sw - 44);
-    } else {
-      offset = current * sw;
-    }
-    grid.style.transform = 'translateX(-' + offset + 'px)';
-    updateDots();
-    updateArrows();
-  }
-
-  if (btnPrev) btnPrev.addEventListener('click', function() { goTo(current - 1); });
-  if (btnNext) btnNext.addEventListener('click', function() { goTo(current + 1); });
-
   function buildDots() {
     if (!dotsWrap) return;
     dotsWrap.innerHTML = '';
-    var pages = maxIdx() + 1;
+    var pages = maxSlide() + 1;
     if (pages <= 1) { dotsWrap.style.display = 'none'; return; }
     dotsWrap.style.display = 'flex';
     for (var i = 0; i < pages; i++) {
-      (function(idx) {
-        var d = document.createElement('button');
-        d.className = 'dot' + (idx === 0 ? ' active' : '');
-        d.addEventListener('click', function() { goTo(idx); });
-        dotsWrap.appendChild(d);
-      })(i);
+      (function(n){ var d = document.createElement('button'); d.className='dot'; d.addEventListener('click', function(){ moveTo(n); }); dotsWrap.appendChild(d); })(i);
     }
   }
-
-  function updateDots() {
-    if (!dotsWrap) return;
-    Array.from(dotsWrap.children).forEach(function(d, i) { d.classList.toggle('active', i === current); });
-  }
-
-  function setMuted(box, muted) {
-    var video = box.querySelector('.test-video');
-    var btn   = box.querySelector('.sound-btn');
-    if (!video || !btn) return;
-    video.muted = muted;
-    var ip = btn.querySelector('.icon-play');
-    var iv = btn.querySelector('.icon-volume');
-    if (ip) ip.style.display = muted ? '' : 'none';
-    if (iv) iv.style.display = muted ? 'none' : '';
-  }
-
-  function initVideos() {
-    boxes().forEach(function(box) {
-      var video = box.querySelector('.test-video');
-      var btn   = box.querySelector('.sound-btn');
-      if (!video) return;
-      video.addEventListener('error', function() { if (btn) btn.style.display = 'none'; });
-      video.play().catch(function() {});
-      if (!btn) return;
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var wasMuted = video.muted;
-        boxes().forEach(function(b) { setMuted(b, true); });
-        if (wasMuted) setMuted(box, false);
-      });
-    });
-  }
-
-  function init() {
-    current = 0;
-    grid.style.transform = '';
-    buildDots();
-    goTo(0);
-    initVideos();
-  }
-
-  window.addEventListener('resize', function() { init(); });
-  init();
+  if (btnPrev) btnPrev.addEventListener('click', function(){ moveTo(current-1); });
+  if (btnNext) btnNext.addEventListener('click', function(){ moveTo(current+1); });
+  // Autoplay videos
+  getBoxes().forEach(function(box) {
+    var v = box.querySelector('.test-video');
+    if (v) { v.muted = true; v.play().catch(function(){}); }
+  });
+  window.addEventListener('resize', function(){ buildDots(); moveTo(current); });
+  buildDots(); moveTo(0);
 })();
 
+
+/* ── SOUND TOGGLE (capture phase — nothing can block this) ── */
+(function() {
+  var fadeTimers = new WeakMap();
+
+  function startFade(btn) {
+    clearTimeout(fadeTimers.get(btn));
+    var t = setTimeout(function() { btn.classList.add('faded'); }, 1000);
+    fadeTimers.set(btn, t);
+  }
+
+  function cancelFade(btn) {
+    clearTimeout(fadeTimers.get(btn));
+    btn.classList.remove('faded');
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('.sound-btn') : null;
+    if (!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    var box = btn.closest('.test-box');
+    if (!box) return;
+    var vid = box.querySelector('.test-video');
+    if (!vid) return;
+
+    var wasMuted = vid.muted;
+
+    // Mute ALL videos and reset their icons/fade first
+    document.querySelectorAll('.test-box').forEach(function(b) {
+      var v2  = b.querySelector('.test-video');
+      var b2  = b.querySelector('.sound-btn');
+      if (!v2 || !b2) return;
+      v2.muted = true;
+      b2.querySelector('.icon-play').style.display   = '';
+      b2.querySelector('.icon-volume').style.display = 'none';
+      cancelFade(b2);
+    });
 </script>
 </body>
 </html>
