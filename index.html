@@ -604,7 +604,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 
 /* ── TESTIMONIAL VIDEOS ── */
-.test-box { position: relative; overflow: hidden; }
+.test-box { position: relative; overflow: hidden; cursor: pointer; }
 .test-video {
   position: absolute;
   inset: 0;
@@ -612,12 +612,22 @@ button { font-family: inherit; cursor: pointer; border: none; }
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   border-radius: inherit;
+  display: block;
+}
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  background: rgba(251,244,230,0.15);
 }
 .test-box.is-playing .test-video { opacity: 1; }
-.test-box.is-playing .play-btn { opacity: 0; pointer-events: none; }
-.play-btn { position: relative; z-index: 2; transition: opacity 0.3s ease; }
+.test-box.is-playing .play-overlay { opacity: 0; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -839,16 +849,31 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="test-slider-viewport" id="testViewport">
   <div class="test-grid" id="testGrid">
     <div class="test-box">
-        <video class="test-video" src="https://cdn.shopify.com/videos/c/o/v/a79d485d192242a0b2854f4f2f2a3e4e.mov" preload="none" playsinline loop></video>
-        <button class="play-btn" aria-label="Play testimonial 1"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+        <video class="test-video" preload="none" playsinline webkit-playsinline muted>
+          <source src="https://cdn.shopify.com/videos/c/o/v/a79d485d192242a0b2854f4f2f2a3e4e.mov" type="video/mp4">
+          <source src="https://cdn.shopify.com/videos/c/o/v/a79d485d192242a0b2854f4f2f2a3e4e.mov" type="video/quicktime">
+        </video>
+        <div class="play-overlay">
+          <button class="play-btn" aria-label="Play testimonial 1"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+        </div>
       </div>
-    <div class="test-box">
-        <video class="test-video" src="https://cdn.shopify.com/videos/c/o/v/0a79f07db9d44f7d932560d5a9611418.mov" preload="none" playsinline loop></video>
-        <button class="play-btn" aria-label="Play testimonial 2"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+      <div class="test-box">
+        <video class="test-video" preload="none" playsinline webkit-playsinline muted>
+          <source src="https://cdn.shopify.com/videos/c/o/v/0a79f07db9d44f7d932560d5a9611418.mov" type="video/mp4">
+          <source src="https://cdn.shopify.com/videos/c/o/v/0a79f07db9d44f7d932560d5a9611418.mov" type="video/quicktime">
+        </video>
+        <div class="play-overlay">
+          <button class="play-btn" aria-label="Play testimonial 2"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+        </div>
       </div>
-    <div class="test-box">
-        <video class="test-video" src="https://cdn.shopify.com/videos/c/o/v/b3659fc040ab409b8ea58206f1035f12.mov" preload="none" playsinline loop></video>
-        <button class="play-btn" aria-label="Play testimonial 3"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+      <div class="test-box">
+        <video class="test-video" preload="none" playsinline webkit-playsinline muted>
+          <source src="https://cdn.shopify.com/videos/c/o/v/b3659fc040ab409b8ea58206f1035f12.mov" type="video/mp4">
+          <source src="https://cdn.shopify.com/videos/c/o/v/b3659fc040ab409b8ea58206f1035f12.mov" type="video/quicktime">
+        </video>
+        <div class="play-overlay">
+          <button class="play-btn" aria-label="Play testimonial 3"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+        </div>
       </div>
   </div>
   </div><!-- /.test-slider-viewport -->
@@ -1538,33 +1563,49 @@ button { font-family: inherit; cursor: pointer; border: none; }
 })();
 
 /* ── TESTIMONIAL VIDEO PLAY ── */
-document.querySelectorAll('.test-box').forEach(function(box) {
-  var video = box.querySelector('.test-video');
-  var btn = box.querySelector('.play-btn');
-  if (!video) return;
-  // If video fails to load, keep design as-is
-  video.addEventListener('error', function() {
-    video.style.display = 'none';
-  });
-  btn.addEventListener('click', function() {
-    if (box.classList.contains('is-playing')) {
-      video.pause();
-      box.classList.remove('is-playing');
-    } else {
-      // Pause any other playing videos
-      document.querySelectorAll('.test-box.is-playing').forEach(function(b) {
-        b.querySelector('.test-video').pause();
-        b.classList.remove('is-playing');
-      });
-      video.play().then(function() {
-        box.classList.add('is-playing');
-      }).catch(function() {
-        // Autoplay blocked or video not found — keep design as-is
+(function() {
+  document.querySelectorAll('.test-box').forEach(function(box) {
+    var video = box.querySelector('.test-video');
+    var overlay = box.querySelector('.play-overlay');
+    if (!video) return;
+
+    // If video can't load at all, hide video element — design stays intact
+    video.addEventListener('error', function() {
+      video.style.display = 'none';
+    });
+
+    // Click anywhere on box to play/pause
+    box.addEventListener('click', function() {
+      if (box.classList.contains('is-playing')) {
+        video.pause();
         box.classList.remove('is-playing');
-      });
-    }
+      } else {
+        // Pause all others first
+        document.querySelectorAll('.test-box.is-playing').forEach(function(b) {
+          b.querySelector('.test-video').pause();
+          b.classList.remove('is-playing');
+        });
+        // Unmute and play
+        video.muted = false;
+        video.currentTime = 0;
+        var playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.then(function() {
+            box.classList.add('is-playing');
+          }).catch(function() {
+            // Browser blocked — try muted first
+            video.muted = true;
+            video.play().then(function() {
+              box.classList.add('is-playing');
+            }).catch(function() {
+              // Video unavailable — keep design as-is
+            });
+          });
+        }
+      }
+    });
   });
-});
+})();
 
 </script>
 </body>
