@@ -45,7 +45,7 @@ img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; }
 
-.section-title { text-align: center; font-family: var(--fashion); font-size: 40px; margin-bottom: 40px; color: var(--brand-pink); font-weight: 400; }
+.section-title { text-align: center; font-family: var(--fashion); font-size: 60px; margin-bottom: 40px; color: var(--brand-pink); font-weight: 400; }
 .dots-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand-blue); opacity: 0.5; transition: opacity .3s; cursor: pointer; border: none; padding: 0; }
 .dot.active { opacity: 1; }
@@ -89,10 +89,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    COURSE DETAIL — pink, 2-col: left=text, right=kit photo
    ============================================================ */
-.course-detail-section { background-color: var(--brand-pink); padding: 60px 8%; }
+.course-detail-section { background-color: var(--brand-pink); padding: 60px 6%; }
 .course-detail-section .course-main-title { font-family: var(--display); font-weight: 400; font-size: 64px; color: var(--brand-cream); text-align: center; line-height: 1.05; margin-bottom: 8px; }
 .course-detail-section .course-tagline { font-family: var(--fashion); font-style: italic; font-size: 18px; color: var(--brand-cream); text-align: center; margin-bottom: 50px; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 100%; margin: 0 auto; }
 .detail-left h2 { font-family: var(--display); font-weight: 400; font-size: 38px; color: var(--brand-cream); margin-bottom: 24px; }
 /* Price pills: cream bg, black text, italic Montserrat, border outline — match mockup exactly */
 .price-pill {
@@ -137,8 +137,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    MEET PREETIKA — pink section, NO waves at all
    ============================================================ */
-.preetika-section { background-color: var(--brand-pink); padding: 70px 8%; }
-.preetika-inner { max-width: 1050px; margin: 0 auto; }
+.preetika-section { background-color: var(--brand-pink); padding: 70px 6%; }
+.preetika-inner { max-width: 100%; margin: 0 auto; }
 .preetika-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 .preetika-text { text-align: center; }
 .preetika-text h3 { font-family: var(--display); font-weight: 400; font-size: 44px; color: var(--brand-cream); margin-bottom: 0; line-height: 1; }
@@ -151,8 +151,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    STATS BAR — cream bg, blue icons, pink Chonburi text
    ============================================================ */
-.stats-section { background-color: var(--brand-cream); padding: 40px 8% 50px; border-top: 3px solid var(--brand-pink); border-bottom: 3px solid var(--brand-pink); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; text-align: center; }
+.stats-section { background-color: var(--brand-cream); padding: 40px 6% 50px; border-top: 3px solid var(--brand-pink); border-bottom: 3px solid var(--brand-pink); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 100%; margin: 0 auto; text-align: center; }
 .stat-item { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .stat-icon-wrap { width: 80px; height: 80px; flex-shrink: 0; }
 .stat-icon-wrap svg { width: 100%; height: 100%; }
@@ -162,9 +162,9 @@ button { font-family: inherit; cursor: pointer; border: none; }
    STUDENT TESTIMONIALS — pink, 3 cream tall cards
    (exact match to test-section in index.html)
    ============================================================ */
-.test-section { background-color: var(--brand-pink); padding: 55px 8% 90px; }
+.test-section { background-color: var(--brand-pink); padding: 55px 6% 90px; }
 .test-section .section-title { color: var(--brand-cream); font-family: var(--display); font-size: 48px; margin-bottom: 45px; font-weight: 400; }
-.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; max-width: 1050px; margin: 0 auto; }
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; max-width: 100%; margin: 0 auto; }
 .test-box { background: var(--brand-cream); border-radius: 34px; aspect-ratio: 3/4; position: relative; overflow: hidden; }
 .test-box .play-btn { border-color: var(--brand-pink); color: var(--brand-pink); width: 66px; height: 66px; }
 .test-box .play-btn svg { width: 26px; height: 26px; }
@@ -186,7 +186,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    CONSULTATION — pink, exact copy from index.html
    ============================================================ */
-.consultation-section { background-color: var(--brand-pink); padding: 60px 8%; }
+.consultation-section { background-color: var(--brand-pink); padding: 60px 6%; }
 .consultation-section .section-title { color: var(--brand-white); font-family: var(--display); font-size: 48px; margin-bottom: 40px; font-weight: 400; }
 .consultation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
 .consultation-box { border-radius: 30px; overflow: hidden; }
@@ -202,9 +202,9 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    MINI KITS — cream, exact copy from index.html
    ============================================================ */
-.minikits-section { background-color: var(--brand-cream); padding: 80px 8%; }
+.minikits-section { background-color: var(--brand-cream); padding: 80px 6%; }
 .minikits-section .section-title { color: var(--brand-pink); font-family: var(--display); font-size: 46px; margin-bottom: 60px; }
-.minikits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; max-width: 1100px; margin: 0 auto; }
+.minikits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; max-width: 100%; margin: 0 auto; }
 .minikit-col { display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .minikit-box { background: #fefaf2; border-radius: 22px; width: 100%; aspect-ratio: 5/6; overflow: hidden; }
 .minikit-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -216,7 +216,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    PRE-FOOTER — exact copy from index.html
    ============================================================ */
-.pre-footer { background-color: var(--brand-blue); color: var(--brand-black); padding: 40px 8%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.pre-footer { background-color: var(--brand-blue); color: var(--brand-black); padding: 40px 6%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .pf-item { display: flex; flex-direction: column; gap: 10px; font-size: 11px; }
 .pf-title { font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 13px; }
 
@@ -228,7 +228,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .footer-wave svg { display: block; width: 100%; height: 100%; }
 .footer-wave .wave-fill { fill: var(--brand-blue); }
 .footer-wave .wave-stroke { fill: none; stroke: var(--brand-blue-dark); stroke-width: 2px; }
-.footer-inner { position: relative; padding: 0 8%; max-width: 1280px; margin: 0 auto; }
+.footer-inner { position: relative; padding: 0 8%; max-width: 100%; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(45,45,45,0.1); align-items: start; }
 .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; color: var(--brand-black); }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -262,7 +262,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================================
    RESPONSIVE — copied + extended from index.html
    ============================================================ */
-@media (max-width: 1200px) {
+@media (max-width: 100%) {
   .nav-links { gap: 16px; font-size: 13px; }
   .header-search { flex-basis: 220px; }
 }
@@ -301,7 +301,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 
 /* ── MINI KITS SLIDER ── */
-.minikits-slider-wrap { position: relative; display: flex; align-items: center; gap: 20px; max-width: 480px; margin: 0 auto; }
+.minikits-slider-wrap { position: relative; display: flex; align-items: center; gap: 20px; max-width: 100%; margin: 0 auto; }
 .minikits-viewport { overflow: hidden; width: 100%; }
 .minikits-track { display: flex; transition: transform 0.45s cubic-bezier(0.25,0.8,0.25,1); will-change: transform; }
 .minikit-col { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
@@ -900,64 +900,36 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 <!-- ═══ STUDENT TESTIMONIALS — pink, exact match to test-section ═══ -->
 <section class="test-section">
-  <h2 class="section-title">Student Testimonials</h2>
-  <div class="test-slider-controls">
-  <button class="test-arrow test-arrow--prev" id="testPrev" aria-label="Previous">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <div class="test-slider-viewport" id="testViewport">
-  <div class="test-grid" id="testGrid">
-      <div class="test-box">
-        <video class="test-video" autoplay muted loop playsinline preload="auto">
-          <source src="https://cdn.shopify.com/videos/c/o/v/6c8c1bd2c24443ad91a92aefe77c1e07.mp4" type="video/mp4">
-        </video>
-        <div class="play-overlay">
-          <button class="sound-btn" aria-label="Toggle sound">
-            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </button>
+  <h2 class="section-title">Testimonials</h2>
+  <div class="test-carousel-wrap">
+    <button class="test-arrow" id="testPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="test-viewport" id="testViewport">
+      <div class="test-track" id="testGrid">
+        <div class="test-box">
+          <video class="test-video" autoplay muted loop playsinline preload="auto"><source src="https://cdn.shopify.com/videos/c/o/v/6c8c1bd2c24443ad91a92aefe77c1e07.mp4" type="video/mp4"></video>
+          <div class="play-overlay"><button class="sound-btn" aria-label="Toggle sound"><svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg><svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-      </div>
-      <div class="test-box">
-        <video class="test-video" autoplay muted loop playsinline preload="auto">
-          <source src="https://cdn.shopify.com/videos/c/o/v/169293710730450dbdd65c6f3bafb442.mp4" type="video/mp4">
-        </video>
-        <div class="play-overlay">
-          <button class="sound-btn" aria-label="Toggle sound">
-            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </button>
+        <div class="test-box">
+          <video class="test-video" autoplay muted loop playsinline preload="auto"><source src="https://cdn.shopify.com/videos/c/o/v/169293710730450dbdd65c6f3bafb442.mp4" type="video/mp4"></video>
+          <div class="play-overlay"><button class="sound-btn" aria-label="Toggle sound"><svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg><svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-      </div>
-      <div class="test-box">
-        <video class="test-video" autoplay muted loop playsinline preload="auto">
-          <source src="https://cdn.shopify.com/videos/c/o/v/314711d121a44a3cac37e3fa2ab28bc4.mp4" type="video/mp4">
-        </video>
-        <div class="play-overlay">
-          <button class="sound-btn" aria-label="Toggle sound">
-            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </button>
+        <div class="test-box">
+          <video class="test-video" autoplay muted loop playsinline preload="auto"><source src="https://cdn.shopify.com/videos/c/o/v/314711d121a44a3cac37e3fa2ab28bc4.mp4" type="video/mp4"></video>
+          <div class="play-overlay"><button class="sound-btn" aria-label="Toggle sound"><svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg><svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-      </div>
-      <div class="test-box">
-        <video class="test-video" autoplay muted loop playsinline preload="auto">
-          <source src="https://cdn.shopify.com/videos/c/o/v/e5ac17eeb8ea483481c67aebd473d310.mp4" type="video/mp4">
-        </video>
-        <div class="play-overlay">
-          <button class="sound-btn" aria-label="Toggle sound">
-            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </button>
+        <div class="test-box">
+          <video class="test-video" autoplay muted loop playsinline preload="auto"><source src="https://cdn.shopify.com/videos/c/o/v/e5ac17eeb8ea483481c67aebd473d310.mp4" type="video/mp4"></video>
+          <div class="play-overlay"><button class="sound-btn" aria-label="Toggle sound"><svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><polygon points="5 3 19 12 5 21 5 3"/></svg><svg class="icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
       </div>
     </div>
-  </div><!-- /.test-slider-viewport -->
-  <button class="test-arrow test-arrow--next" id="testNext" aria-label="Next">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-</div><!-- /.test-slider-controls -->
-  <div class="dots-pagination" id="testDots" style="margin-top:20px;"></div>
+    <button class="test-arrow" id="testNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="dots-pagination" id="testDots"></div>
 </section>
 
 <!-- ═══ STUDENT GALLERY — cream ═══ -->
